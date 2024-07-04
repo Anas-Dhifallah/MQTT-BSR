@@ -14,7 +14,10 @@ port=$(grep -E "^listener\s+([0-9]+)" /etc/mosquitto/mosquitto.conf | awk '{prin
 echo "Port used: $port"
 
 # Test connection with authentication
-mosquitto_sub -h $broker -t $topic -v -d -u $username -P $password -p $port
+mosquitto_sub -h $broker -t $topic -v -d -u $username -P $password -p $port | while read -r data; do
+	echo "$data" >> data.txt
+	echo ", " >> data.txt
+done
 
 if [ $? -eq 0 ]; then
   echo "Login Successful."
