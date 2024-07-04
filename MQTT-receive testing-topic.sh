@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set username and password (replace with your actual credentials)
+# Set username and password 
 read -p "Username: " username
 read -sp "Password: " password
 echo
@@ -9,7 +9,7 @@ echo
 broker="localhost"
 topic="testing-topic"
 
-# Get the actual port used (defaults to 1883)
+# Get the actual port used 
 port=$(grep -E "^listener\s+([0-9]+)" /etc/mosquitto/mosquitto.conf | awk '{print $2}')
 echo "Port used: $port"
 
