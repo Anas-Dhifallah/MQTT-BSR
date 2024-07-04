@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Username and password (replace with your credentials)
+# Username and password 
 read -p "Username: " username
 read -sp "Password: " password
 echo
@@ -9,7 +9,7 @@ echo
 broker="localhost"
 topic="testing-ground"
 
-# Loop to handle multiple messages
+# Infinite Loop unless...
 while true; do
   # Read message from user
   read -p "Enter message (or 'quit' to exit): " message
@@ -23,7 +23,7 @@ while true; do
   # Publish message with authentication
   mosquitto_pub -h "$broker" -t "$topic" -m "$message" -u "$username" -P "$password"
 
-  # Check for successful publication
+  # Check for successful publication of msg
   if [ $? -eq 0 ]; then
     echo "Message published successfully"
   else
